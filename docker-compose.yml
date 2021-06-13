@@ -25,10 +25,11 @@ services:
         soft: 20000
         hard: 40000
     environment:
-      MYSQL_USER: K9brEwbDsdxtMyGAXV_zabbix
+      DB_SERVER_HOST: mydatabase.v41.me
+      MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
       MYSQL_ROOT_PASSWORD: root_pwd
-      MYSQL_DATABASE: jtxZ3A9A69J2eFgVwp_zabbix
+      MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       ZBX_JAVAGATEWAY_ENABLE: 'false'
       ZBX_ENABLE_SNMP_TRAPS: 'false'
     stop_grace_period: 30s
