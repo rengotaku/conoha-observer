@@ -52,9 +52,6 @@ services:
     networks:
       zabbix_network:
         ipv4_address: 172.19.0.6
-  links:
-    - mysql-server:mysql-server
-    - zabbix-server:zabbix-server
   volumes:
     - /etc/localtime:/etc/localtime:ro
     - ./etc/ssl/nginx:/etc/ssl/nginx:ro
