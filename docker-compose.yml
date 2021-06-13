@@ -52,35 +52,35 @@ services:
     networks:
       zabbix_network:
         ipv4_address: 172.19.0.6
-  volumes:
-    - /etc/localtime:/etc/localtime:ro
-    - ./etc/ssl/nginx:/etc/ssl/nginx:ro
-    - ./usr/share/zabbix/modules/:/usr/share/zabbix/modules/:ro
-  environment:
-    DB_SERVER_HOST: mydatabase.v41.me
-    MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
-    MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-    MYSQL_ROOT_PASSWORD: root_pwd
-    MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
-    PHP_TZ: Asia/Tokyo
-  depends_on:
-    - zabbix-server
-  healthcheck:
-    test: ["CMD", "curl", "-f", "http://localhost:8080/"]
-    interval: 10s
-    timeout: 5s
-    retries: 3
-    start_period: 30s
-  stop_grace_period: 10s
-  sysctls:
-    - net.core.somaxconn=65535
-  labels:
-    com.zabbix.description: "Zabbix frontend on Nginx web-server with MySQL database support"
-    com.zabbix.company: "Zabbix LLC"
-    com.zabbix.component: "zabbix-frontend"
-    com.zabbix.webserver: "nginx"
-    com.zabbix.dbtype: "mysql"
-    com.zabbix.os: "alpine"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./etc/ssl/nginx:/etc/ssl/nginx:ro
+      - ./usr/share/zabbix/modules/:/usr/share/zabbix/modules/:ro
+    environment:
+      DB_SERVER_HOST: mydatabase.v41.me
+      MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
+      MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
+      MYSQL_ROOT_PASSWORD: root_pwd
+      MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
+      PHP_TZ: Asia/Tokyo
+    depends_on:
+      - zabbix-server
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+    stop_grace_period: 10s
+    sysctls:
+      - net.core.somaxconn=65535
+    labels:
+      com.zabbix.description: "Zabbix frontend on Nginx web-server with MySQL database support"
+      com.zabbix.company: "Zabbix LLC"
+      com.zabbix.component: "zabbix-frontend"
+      com.zabbix.webserver: "nginx"
+      com.zabbix.dbtype: "mysql"
+      com.zabbix.os: "alpine"
 
 networks:
   zabbix_network:
