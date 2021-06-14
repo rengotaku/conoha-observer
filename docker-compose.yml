@@ -44,6 +44,7 @@ services:
       com.zabbix.component: "zabbix-server"
       com.zabbix.dbtype: "mysql"
       com.zabbix.os: "alpine"
+    command: tail -f /dev/null
 
   zabbix-web-nginx-mysql:
     image: zabbix/zabbix-web-nginx-mysql:alpine-5.0-latest
