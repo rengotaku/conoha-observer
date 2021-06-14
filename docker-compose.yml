@@ -28,7 +28,7 @@ services:
       DB_SERVER_HOST: mydatabase.v41.me
       MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-      MYSQL_ROOT_PASSWORD: root_pwd
+      MYSQL_ROOT_PASSWORD: ZubRfFzeEN&T#^LHmJRkWN96Lf^ZxpL_8tcGT@ntV7S4Rha?UaVpT#CjcC7GgGT&!aq?wA?4q*cKDxr
       MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       ZBX_JAVAGATEWAY_ENABLE: 'false'
       ZBX_ENABLE_SNMP_TRAPS: 'false'
@@ -61,7 +61,7 @@ services:
       DB_SERVER_HOST: mydatabase.v41.me
       MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-      MYSQL_ROOT_PASSWORD: root_pwd
+      # MYSQL_ROOT_PASSWORD: root_pwd
       MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       PHP_TZ: Asia/Tokyo
     depends_on:
