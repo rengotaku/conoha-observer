@@ -11,9 +11,9 @@ services:
     container_name: zabbix-server
     ports:
       - "10051:10051"
-    networks:
-      zabbix_network:
-        ipv4_address: 172.19.0.5
+    # networks:
+    #   zabbix_network:
+    #     ipv4_address: 172.19.0.5
     volumes:
       - /etc/localtime:/etc/localtime:ro
       # - /etc/timezone:/etc/timezone:ro
@@ -57,9 +57,9 @@ services:
     container_name: zabbix-web
     ports:
       - "80:8080"
-    networks:
-      zabbix_network:
-        ipv4_address: 172.19.0.6
+    # networks:
+    #   zabbix_network:
+    #     ipv4_address: 172.19.0.6
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./etc/ssl/nginx:/etc/ssl/nginx:ro
@@ -90,12 +90,12 @@ services:
       com.zabbix.dbtype: "mysql"
       com.zabbix.os: "alpine"
 
-networks:
-  zabbix_network:
-    driver: bridge
-    driver_opts:
-      com.docker.network.enable_ipv6: "false"
-    ipam:
-      driver: default
-      config:
-      - subnet: 172.19.0.0/16
+# networks:
+#   zabbix_network:
+#     driver: bridge
+#     driver_opts:
+#       com.docker.network.enable_ipv6: "false"
+#     ipam:
+#       driver: default
+#       config:
+#       - subnet: 172.19.0.0/16
