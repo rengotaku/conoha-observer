@@ -1,5 +1,11 @@
 version: '3.5'
 services:
+  tools:
+    build:
+      context: ./
+      dockerfile: Dockerfile.tools
+    command: tail -f /dev/null
+
   zabbix-server:
     image: zabbix/zabbix-server-mysql:alpine-5.0-latest
     container_name: zabbix-server
