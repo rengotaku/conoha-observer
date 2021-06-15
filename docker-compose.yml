@@ -7,7 +7,8 @@ services:
   #   command: tail -f /dev/null
 
   zabbix-server:
-    image: zabbix/zabbix-server-mysql:alpine-5.0-latest
+    image: zabbix/zabbix-server-mysql:4.0-centos-latest
+    # image: zabbix/zabbix-server-mysql:alpine-5.0-latest
     container_name: zabbix-server
     ports:
       - "10051:10051"
@@ -50,7 +51,7 @@ services:
       com.zabbix.component: "zabbix-server"
       com.zabbix.dbtype: "mysql"
       com.zabbix.os: "alpine"
-    command: tail -f /dev/null
+    # command: tail -f /dev/null
 
   zabbix-web-nginx-mysql:
     image: zabbix/zabbix-web-nginx-mysql:alpine-5.0-latest
