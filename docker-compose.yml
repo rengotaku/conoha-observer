@@ -40,11 +40,11 @@ services:
       ZBX_JAVAGATEWAY_ENABLE: 'false'
       ZBX_ENABLE_SNMP_TRAPS: 'false'
     stop_grace_period: 30s
-    sysctls:
-      - net.ipv4.ip_local_port_range=1024 65000
-      - net.ipv4.conf.all.accept_redirects=0
-      - net.ipv4.conf.all.secure_redirects=0
-      - net.ipv4.conf.all.send_redirects=0
+    # sysctls:
+    #   - net.ipv4.ip_local_port_range=1024 65000
+    #   - net.ipv4.conf.all.accept_redirects=0
+    #   - net.ipv4.conf.all.secure_redirects=0
+    #   - net.ipv4.conf.all.send_redirects=0
     labels:
       com.zabbix.description: "Zabbix server with MySQL database support"
       com.zabbix.company: "Zabbix LLC"
