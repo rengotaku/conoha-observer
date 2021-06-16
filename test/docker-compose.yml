@@ -1,0 +1,8 @@
+version: '3.5'
+services:
+  zabbix-server:
+    image: zabbix/zabbix-server-mysql:4.0-centos-latest
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: tail -f /dev/null

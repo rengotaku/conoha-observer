@@ -7,8 +7,8 @@ services:
   #   command: tail -f /dev/null
 
   zabbix-server:
-    image: zabbix/zabbix-server-mysql:4.0-centos-latest
-    # image: zabbix/zabbix-server-mysql:alpine-5.0-latest
+    # image: zabbix/zabbix-server-mysql:4.0-centos-latest
+    image: zabbix/zabbix-server-mysql:alpine-5.0-latest
     container_name: zabbix-server
     ports:
       - "10051:10051"
@@ -35,7 +35,7 @@ services:
       DB_SERVER_HOST: mydatabase.v41.me
       MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-      MYSQL_ROOT_PASSWORD: ZubRfFzeEN&T#^LHmJRkWN96Lf^ZxpL_8tcGT@ntV7S4Rha?UaVpT#CjcC7GgGT&!aq?wA?4q*cKDxr
+      # MYSQL_ROOT_PASSWORD: ZubRfFzeEN&T#^LHmJRkWN96Lf^ZxpL_8tcGT@ntV7S4Rha?UaVpT#CjcC7GgGT&!aq?wA?4q*cKDxr
       MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       ZBX_JAVAGATEWAY_ENABLE: 'false'
       ZBX_ENABLE_SNMP_TRAPS: 'false'
