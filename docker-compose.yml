@@ -1,23 +1,12 @@
 version: '3.5'
 services:
-  # tools:
-  #   build:
-  #     context: ./
-  #     dockerfile: Dockerfile.tools
-  #   command: tail -f /dev/null
-
   zabbix-server:
-    # image: zabbix/zabbix-server-mysql:4.0-centos-latest
     image: zabbix/zabbix-server-mysql:alpine-5.0-latest
     container_name: zabbix-server
     ports:
       - "10051:10051"
-    # networks:
-    #   zabbix_network:
-    #     ipv4_address: 172.19.0.5
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      # - /etc/timezone:/etc/timezone:ro
       - ./usr/lib/zabbix/alertscripts:/usr/lib/zabbix/alertscripts:ro
       - ./usr/lib/zabbix/externalscripts:/usr/lib/zabbix/externalscripts:ro
       - ./var/lib/zabbix/export:/var/lib/zabbix/export:rw
@@ -35,22 +24,19 @@ services:
       DB_SERVER_HOST: mydatabase.v41.me
       MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-      # MYSQL_ROOT_PASSWORD: ZubRfFzeEN&T#^LHmJRkWN96Lf^ZxpL_8tcGT@ntV7S4Rha?UaVpT#CjcC7GgGT&!aq?wA?4q*cKDxr
       MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       ZBX_JAVAGATEWAY_ENABLE: 'false'
       ZBX_ENABLE_SNMP_TRAPS: 'false'
     stop_grace_period: 30s
-    # sysctls:
-    #   - net.ipv4.ip_local_port_range=1024 65000
-    #   - net.ipv4.conf.all.accept_redirects=0
-    #   - net.ipv4.conf.all.secure_redirects=0
-    #   - net.ipv4.conf.all.send_redirects=0
     labels:
       com.zabbix.description: "Zabbix server with MySQL database support"
       com.zabbix.company: "Zabbix LLC"
       com.zabbix.component: "zabbix-server"
       com.zabbix.dbtype: "mysql"
       com.zabbix.os: "alpine"
+    networks:
+      zabbix_network:
+        ipv4_address: 172.19.0.2
     # command: tail -f /dev/null
 
   zabbix-web-nginx-mysql:
@@ -58,9 +44,6 @@ services:
     container_name: zabbix-web
     ports:
       - "80:8080"
-    # networks:
-    #   zabbix_network:
-    #     ipv4_address: 172.19.0.6
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./etc/ssl/nginx:/etc/ssl/nginx:ro
@@ -69,7 +52,6 @@ services:
       DB_SERVER_HOST: mydatabase.v41.me
       MYSQL_USER: jtxZ3A9A69J2eFgVwp_zabbix
       MYSQL_PASSWORD: jtxZ3A9A69J2eFgVwpJE97beUnuE9MW5xBerSgSaespwrTEYx5qbKgLsNfJqRSXHtmfpHh
-      # MYSQL_ROOT_PASSWORD: root_pwd
       MYSQL_DATABASE: K9brEwbDsdxtMyGAXV_zabbix
       PHP_TZ: Asia/Tokyo
     depends_on:
@@ -90,13 +72,16 @@ services:
       com.zabbix.webserver: "nginx"
       com.zabbix.dbtype: "mysql"
       com.zabbix.os: "alpine"
+    networks:
+      zabbix_network:
+        ipv4_address: 172.19.0.3
 
-# networks:
-#   zabbix_network:
-#     driver: bridge
-#     driver_opts:
-#       com.docker.network.enable_ipv6: "false"
-#     ipam:
-#       driver: default
-#       config:
-#       - subnet: 172.19.0.0/16
+networks:
+  zabbix_network:
+    driver: bridge
+    driver_opts:
+      com.docker.network.enable_ipv6: "false"
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.19.0.0/16
